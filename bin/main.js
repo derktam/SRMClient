@@ -4,6 +4,7 @@
 
 //-------------------------------------------
 var config = [];
+config.default_name = '';
 config.server_ip = '192.168.100.135';
 config.server_cmd_port = 6004;
 config.server_proxy_port = 6005;

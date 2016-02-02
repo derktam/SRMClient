@@ -3,6 +3,8 @@
  */
 var net = require('net');
 var async = require('async');
+var readline = require('readline');
+
 var global = null;
 module.exports = function(main, ip, port) {
     var getConnection = function(connName){
@@ -74,14 +76,17 @@ module.exports = function(main, ip, port) {
                                 if(packet.data == 'retry'){
                                     console.log("중복된 이름을 입력하셨습니다.");
                                 }
-                                process.stdin.resume();
-                                process.stdin.setEncoding('utf8');
                                 async.waterfall([
                                     function(cb) {
-                                        console.log("등록할 이름을 입력해주세요 : ");
-                                        process.stdin.once('data', function (chunk) {
-                                            process.stdin.pause();
-                                            cb(null,chunk);
+                                        var rl = readline.createInterface({
+                                            input: process.stdin,
+                                            output: process.stdout
+                                        });
+
+                                        rl.question("== 등록할 이름을 입력해주세요 ==\n", function(answer) {
+                                            // TODO: 데이터베이스에 답변을 로깅한다
+                                            rl.close();
+                                            cb(null,answer);
                                         });
                                     },function(chunk,cb) {
                                         var packet = create_packet('name_check',chunk, true);
