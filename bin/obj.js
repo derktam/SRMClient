@@ -1,12 +1,15 @@
 /**
  * Created by Minhyeong on 2016-01-22.
  */
+
+
 var NodeRSA = require('node-rsa');
 var key = new NodeRSA({b: 512});
 var server_key = new NodeRSA({b: 512});
 var server_socket = "";
 var proxy = [];
 var test = 0;
+
 
 proxy['get_target_socket'] = function (socket) {
     for(var i=0;i<proxy.length;i++){

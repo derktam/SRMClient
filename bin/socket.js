@@ -14,7 +14,7 @@ module.exports = function(main, ip, port) {
             console.log('   remote = %s:%s', this.remoteAddress, this.remotePort);
             this.setMaxListeners(0);
 
-            if(port == 7004) {
+            if(port == main.config.server_cmd_port) {
                 this.setEncoding('utf8');
                 var packet = create_packet('hello', main.obj.key.exportKey('public'));
                 send(this, packet);
@@ -28,26 +28,27 @@ module.exports = function(main, ip, port) {
                     this.end();
                 }else if(connName == 'proxy'){
                     console.log("############# proxy ###########");
-                    main.obj.proxy.link(this,function(socket){
-                        var packet = main.obj.proxy.get_id_by_socket(socket) + "|" + socket.localAddress + ":" + socket.localPort;
-                        packet = create_packet('link', packet, true);
-                        send(main.obj.server_socket, packet);
-                        console.log("link complete");
-                    });
+                    main.obj.proxy.link(this,callback_link);
                 }else if(connName == 'client'){
                     console.log("############# client ###########");
-                    main.obj.proxy.link(this,function(socket){
-                        var packet = main.obj.proxy.get_id_by_socket(socket) + "|" + socket.localAddress + ":" + socket.localPort;
-                        packet = create_packet('link', packet, true);
-                        send(main.obj.server_socket, packet);
-                        console.log("link complete");
-                    });
+                    main.obj.proxy.link(this,callback_link);
                 }
             }
+
+            function callback_link(socket){
+                var packet = main.obj.proxy.get_id_by_socket(socket) + "|" + socket.localAddress + ":" + socket.localPort;
+                packet = create_packet('link', packet, true);
+                send(main.obj.server_socket, packet);
+                console.log("link complete");
+                var tmp = main.obj.proxy.get_target_socket(socket);
+                socket.resume();
+                tmp.resume();
+            }
+
             this.on('data', function(data) {
-                console.log('Received data from client on port %d: %s', client.remotePort, data.toString());
+                //console.log('Received data from client on port %d: %s', client.remotePort, data.toString());
                 //console.log('[' + connName + ']  Bytes received: ' + client.bytesRead);
-                if(port == 7004) {
+                if(port == main.config.server_cmd_port) {
                     var packet = json_parse(data);
                     if(packet == -1)    return;
                     switch (packet.type) {
@@ -70,12 +71,15 @@ module.exports = function(main, ip, port) {
                             if(packet.data == 'ok'){
                                 console.log("클라이언트가 시작되었습니다.");
                             }else if(packet.data == 'name' || packet.data == 'retry'){
+                                if(packet.data == 'retry'){
+                                    console.log("중복된 이름을 입력하셨습니다.");
+                                }
                                 process.stdin.resume();
                                 process.stdin.setEncoding('utf8');
                                 async.waterfall([
                                     function(cb) {
                                         console.log("등록할 이름을 입력해주세요 : ");
-                                        process.stdin.on('data', function (chunk) {
+                                        process.stdin.once('data', function (chunk) {
                                             process.stdin.pause();
                                             cb(null,chunk);
                                         });
@@ -90,7 +94,7 @@ module.exports = function(main, ip, port) {
                             var pr_ip = packet.data.split(":")[0];
                             var pr_port = parseInt(packet.data.split(":")[1]);
 
-                            var clientSocket = require('./socket')(main, pr_ip, pr_port);
+                            var clientSocket = require('./socket')(main, pr_ip, pr_port, main.config);
                             clientSocket.getConnection('client-test');
 
                             break;
@@ -102,11 +106,12 @@ module.exports = function(main, ip, port) {
                             console.log("[cmd][proxy_link]" + packet.data);
                             var tmp = packet.data.split("|");
 
-                            var proxySocket = require('./socket')(main, '192.168.100.252', '7005');
-                            var socket1 = proxySocket.getConnection('proxy');
-
-                            var clientSocket = require('./socket')(main, tmp[1], tmp[2]);
-                            var socket2 = clientSocket.getConnection('client');
+                            var socket1 = require('./socket')(main, main.config.server_ip, main.config.server_proxy_port).getConnection('proxy');
+                            socket1.pause();
+                            console.log('socket1 pause');
+                            var socket2 = require('./socket')(main, tmp[1], tmp[2]).getConnection('client');
+                            socket2.pause();
+                            console.log('socket2 pause');
 
                             main.obj.proxy.add(tmp[0],socket1,socket2);
                             break;
@@ -125,8 +130,12 @@ module.exports = function(main, ip, port) {
             });
 
             this.on('end', function() {
-                main.obj.proxy.delete(this);
-                console.log(connName + ' Client disconnected');
+                /*
+                if(port != main.config.server_cmd_port) {
+                    main.obj.proxy.delete(this);
+                }else{
+                    console.log("메인 서버 종료");
+                }*/
             });
             this.on('error', function(err) {
                 console.log('Socket Error: ', JSON.stringify(err));
@@ -136,6 +145,17 @@ module.exports = function(main, ip, port) {
                 console.log('Socket Timed Out');
             });
             this.on('close', function() {
+                if(port != main.config.server_cmd_port) {
+                    main.obj.proxy.delete(this);
+                    console.log(connName + ' Client disconnected[' + main.obj.proxy.length + ']');
+                }else{
+                    console.log("메인 서버 종료");
+
+                    setTimeout(function(){
+                        console.log("재접속 시도중..");
+                        main.cmd_socket.getConnection("cmd");
+                    }, 1);
+                }
                 console.log('Socket Closed');
             });
         });

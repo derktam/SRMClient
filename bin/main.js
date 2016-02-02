@@ -1,36 +1,41 @@
-//-------------------------------------------
-
-var server_ip = '192.168.100.252';
-var server_cmd_port = 7004;
-var server_proxy_port = 7005;
+/**
+ * Created by Minhyeong on 2016-01-22.
+ */
 
 //-------------------------------------------
-
-
-var cmd_socket = require('./socket')(this, server_ip, server_cmd_port);
+var config = [];
+config.server_ip = '192.168.100.135';
+config.server_cmd_port = 6004;
+config.server_proxy_port = 6005;
+//-------------------------------------------
+this.config = config;
 this.obj = require('./obj');
-cmd_socket.getConnection("cmd");
 
+var cmd_socket = require('./socket')(this, config.server_ip, config.server_cmd_port);
+cmd_socket.getConnection('cmd');
+this.cmd_socket = cmd_socket;
 
-var global_obj = this.obj;
+var obj = this.obj;
+
 process.on('uncaughtException', function (err) {
     console.log(err.stack);
     if(err.stack.split(" ")[2] == 'ECONNREFUSED'){
         var client_address = err.stack.split(" ")[3].replace(/\n/gi,"");
         switch(client_address){
-            case server_ip+':'+server_cmd_port:
-                console.log("[접속 실패] : 관리 포트");
+            case config.server_ip+':'+config.server_cmd_port:
+                console.log('[접속 실패] : 관리 포트');
                 setTimeout(function(){
-                    cmd_socket.getConnection("cmd");
+                    console.log('재접속 시도중..');
+                    cmd_socket.getConnection('cmd');
                 }, 5000);
                 break;
-            case server_ip+':'+server_proxy_port:
-                console.log("[접속 실패] : 프록시 포트");
+            case config.server_ip+':'+config.server_proxy_port:
+                console.log('[접속 실패] : 프록시 포트');
                 break;
             default:
-                console.log("[접속 실패] : " + client_address);
+                console.log('[접속 실패] : ' + client_address);
                 var packet = cmd_socket.create_packet('link_fail',client_address,true);
-                cmd_socket.send(global_obj.server_socket,packet);
+                cmd_socket.send(obj.server_socket,packet);
                 break;
         }
     }
