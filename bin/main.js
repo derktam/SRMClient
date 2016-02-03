@@ -5,9 +5,9 @@
 //-------------------------------------------
 var config = [];
 config.default_name = '';
-config.server_ip = '192.168.100.135';
-config.server_cmd_port = 6004;
-config.server_proxy_port = 6005;
+config.server_ip = '118.33.90.68';
+config.server_cmd_port = 25104;
+config.server_proxy_port = 25105;
 //-------------------------------------------
 this.config = config;
 this.obj = require('./obj');
