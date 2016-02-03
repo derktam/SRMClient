@@ -71,6 +71,7 @@ module.exports = function(main, ip, port) {
                             break;
                         case 'name_check':
                             if(packet.data == 'ok'){
+                                console.log("식별자 등록 완료!");
                                 console.log("클라이언트가 시작되었습니다.");
                             }else if(packet.data == 'name' || packet.data == 'retry'){
                                 if(packet.data == 'retry'){
@@ -83,8 +84,7 @@ module.exports = function(main, ip, port) {
                                             output: process.stdout
                                         });
 
-                                        rl.question("== 등록할 이름을 입력해주세요 ==\n", function(answer) {
-                                            // TODO: 데이터베이스에 답변을 로깅한다
+                                        rl.question("== 등록할 식별자를 입력해주세요 ==\n", function(answer) {
                                             rl.close();
                                             cb(null,answer);
                                         });
