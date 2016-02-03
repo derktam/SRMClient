@@ -13,10 +13,11 @@ this.config = config;
 this.obj = require('./obj');
 
 var cmd_socket = require('./socket')(this, config.server_ip, config.server_cmd_port);
-cmd_socket.getConnection('cmd');
+var skt = cmd_socket.getConnection('cmd');
 this.cmd_socket = cmd_socket;
 
 var obj = this.obj;
+
 
 process.on('uncaughtException', function (err) {
     console.log(err.stack);
@@ -25,9 +26,10 @@ process.on('uncaughtException', function (err) {
         switch(client_address){
             case config.server_ip+':'+config.server_cmd_port:
                 console.log('[접속 실패] : 관리 포트');
+                obj.proxy.session = [];
                 setTimeout(function(){
                     console.log('재접속 시도중..');
-                    cmd_socket.getConnection('cmd');
+                    skt = cmd_socket.getConnection('cmd');
                 }, 5000);
                 break;
             case config.server_ip+':'+config.server_proxy_port:
@@ -39,5 +41,13 @@ process.on('uncaughtException', function (err) {
                 cmd_socket.send(obj.server_socket,packet);
                 break;
         }
+    }else{
+        console.log('[소켓 종료] : 알 수 없는 에러');
+        skt.destroy();
+        obj.proxy.session = [];
+        setTimeout(function(){
+            console.log('재접속 시도중..');
+            skt = cmd_socket.getConnection('cmd');
+        }, 5000);
     }
 });

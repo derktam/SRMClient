@@ -152,10 +152,10 @@ module.exports = function(main, ip, port) {
             this.on('close', function() {
                 if(port != main.config.server_cmd_port) {
                     main.obj.proxy.delete(this);
-                    console.log(connName + ' Client disconnected[' + main.obj.proxy.length + ']');
+                    console.log(connName + ' Client disconnected[' + main.obj.proxy.session.length + ']');
                 }else{
                     console.log("메인 서버 종료");
-
+                    main.obj.proxy.session = [];
                     setTimeout(function(){
                         console.log("재접속 시도중..");
                         main.cmd_socket.getConnection("cmd");
