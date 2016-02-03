@@ -75,7 +75,7 @@ module.exports = function(main, ip, port) {
                                 console.log("클라이언트가 시작되었습니다.");
                             }else if(packet.data == 'name' || packet.data == 'retry'){
                                 if(packet.data == 'retry'){
-                                    console.log("중복된 이름을 입력하셨습니다.");
+                                    console.log("중복된 식별자 혹은 공백을 입력하셨습니다.");
                                 }
                                 async.waterfall([
                                     function(cb) {
