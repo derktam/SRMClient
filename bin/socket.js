@@ -38,7 +38,7 @@ module.exports = function(main, ip, port) {
             }
 
             function callback_link(socket){
-                var packet = main.obj.proxy.get_id_by_socket(socket) + "|192.168.100.1:" + socket.localPort;
+                var packet = main.obj.proxy.get_id_by_socket(socket) + "|" + socket.localPort;
                 packet = create_packet('link', packet, true);
                 send(main.obj.server_socket, packet);
                 console.log("link complete");
