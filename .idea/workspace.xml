@@ -31,8 +31,8 @@
       <file leaf-file-name="socket.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/bin/socket.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.53571427" vertical-offset="1372" max-vertical-offset="4237">
-              <caret line="88" column="60" selection-start-line="88" selection-start-column="60" selection-end-line="88" selection-end-column="60" />
+            <state vertical-scroll-proportion="0.4232143" vertical-offset="2651" max-vertical-offset="4237">
+              <caret line="152" column="57" selection-start-line="152" selection-start-column="57" selection-end-line="152" selection-end-column="57" />
               <folding />
             </state>
           </provider>
@@ -41,7 +41,7 @@
       <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bin/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.2666667" vertical-offset="0" max-vertical-offset="1102">
+            <state vertical-scroll-proportion="16.8" vertical-offset="542" max-vertical-offset="1102">
               <caret line="2" column="3" selection-start-line="2" selection-start-column="3" selection-end-line="2" selection-end-column="3" />
               <folding />
             </state>
@@ -479,7 +479,7 @@
       <workItem from="1453944419782" duration="17326000" />
       <workItem from="1454030807038" duration="2511000" />
       <workItem from="1454034108647" duration="39850000" />
-      <workItem from="1454422321105" duration="8578000" />
+      <workItem from="1454422321105" duration="10161000" />
     </task>
     <task id="LOCAL-00001" summary="최초 등록">
       <created>1454057499485</created>
@@ -491,7 +491,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="141360000" />
+    <option name="totallyTimeSpent" value="142943000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1976" y="-59" width="1808" height="1027" extended-state="0" />
@@ -965,7 +965,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/bin/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.2666667" vertical-offset="0" max-vertical-offset="1102">
+        <state vertical-scroll-proportion="16.8" vertical-offset="542" max-vertical-offset="1102">
           <caret line="2" column="3" selection-start-line="2" selection-start-column="3" selection-end-line="2" selection-end-column="3" />
           <folding />
         </state>
@@ -973,8 +973,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/bin/socket.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.53571427" vertical-offset="1372" max-vertical-offset="4237">
-          <caret line="88" column="60" selection-start-line="88" selection-start-column="60" selection-end-line="88" selection-end-column="60" />
+        <state vertical-scroll-proportion="0.4232143" vertical-offset="2651" max-vertical-offset="4237">
+          <caret line="152" column="57" selection-start-line="152" selection-start-column="57" selection-end-line="152" selection-end-column="57" />
           <folding />
         </state>
       </provider>

@@ -159,7 +159,7 @@ module.exports = function(main, ip, port) {
                     setTimeout(function(){
                         console.log("재접속 시도중..");
                         main.cmd_socket.getConnection("cmd");
-                    }, 1);
+                    }, 5000);
                 }
                 console.log('Socket Closed');
             });
