@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="cf07afdc-c0d9-4a99-9bbc-3c4fe77d8584" name="Default" comment="최초 등록">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/socket.js" afterPath="$PROJECT_DIR$/bin/socket.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="SRMClient.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,7 +32,7 @@
         <entry file="file://$PROJECT_DIR$/bin/socket.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.4179357" vertical-offset="1197" max-vertical-offset="4370">
-              <caret line="76" column="48" selection-start-line="76" selection-start-column="48" selection-end-line="76" selection-end-column="48" />
+              <caret line="76" column="38" selection-start-line="76" selection-start-column="38" selection-end-line="76" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -482,7 +481,7 @@
       <workItem from="1454034108647" duration="39850000" />
       <workItem from="1454422321105" duration="13511000" />
       <workItem from="1454568195634" duration="38000" />
-      <workItem from="1454568241138" duration="972000" />
+      <workItem from="1454568241138" duration="1091000" />
     </task>
     <task id="LOCAL-00001" summary="최초 등록">
       <created>1454057499485</created>
@@ -494,7 +493,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="147303000" />
+    <option name="totallyTimeSpent" value="147422000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1985" y="-101" width="1808" height="1027" extended-state="0" />
@@ -959,7 +958,7 @@
     <entry file="file://$PROJECT_DIR$/bin/socket.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.4179357" vertical-offset="1197" max-vertical-offset="4370">
-          <caret line="76" column="48" selection-start-line="76" selection-start-column="48" selection-end-line="76" selection-end-column="48" />
+          <caret line="76" column="38" selection-start-line="76" selection-start-column="38" selection-end-line="76" selection-end-column="38" />
           <folding />
         </state>
       </provider>

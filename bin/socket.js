@@ -74,7 +74,7 @@ module.exports = function(main, ip, port) {
                             if(packet.data == 'ok'){
                                 if(input_name){
                                     console.log("식별자 등록 완료!");
-                                    console.log("srm_start.sh 을 실행시켜 주세요!");
+                                    //console.log("srm_start.sh 을 실행시켜 주세요!");
                                     process.exit();
                                 }else{
                                     console.log("클라이언트가 시작되었습니다.");
