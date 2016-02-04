@@ -10,6 +10,7 @@ module.exports = function(main, ip, port) {
     var getConnection = function(connName){
         var client = net.connect({port: port, host: ip}, function() {
             global = this;
+            var input_name = false;
             var target_socket = undefined;
             console.log(connName + ' Connected: ');
             console.log('   local = %s:%s', this.localAddress, this.localPort);
@@ -71,8 +72,13 @@ module.exports = function(main, ip, port) {
                             break;
                         case 'name_check':
                             if(packet.data == 'ok'){
-                                console.log("식별자 등록 완료!");
-                                console.log("클라이언트가 시작되었습니다.");
+                                if(input_name){
+                                    console.log("식별자 등록 완료!");
+                                    console.log("srm_start.sh 을 실행시켜 주세요!");
+                                    process.exit();
+                                }else{
+                                    console.log("클라이언트가 시작되었습니다.");
+                                }
                             }else if(packet.data == 'name' || packet.data == 'retry'){
                                 if(packet.data == 'retry'){
                                     console.log("중복된 식별자 혹은 공백을 입력하셨습니다.");
@@ -91,6 +97,7 @@ module.exports = function(main, ip, port) {
                                     },function(chunk,cb) {
                                         var packet = create_packet('name_check',chunk, true);
                                         send(global,packet);
+                                        input_name = true;
                                     }
                                 ]);
                             }
