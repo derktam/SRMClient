@@ -27,6 +27,7 @@ process.on('uncaughtException', function (err) {
             case config.server_ip+':'+config.server_cmd_port:
                 console.log('[접속 실패] : 관리 포트');
                 obj.proxy.session = [];
+                skt.destroy();
                 setTimeout(function(){
                     console.log('재접속 시도중..');
                     skt = cmd_socket.getConnection('cmd');
