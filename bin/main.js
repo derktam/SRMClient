@@ -26,15 +26,12 @@ process.on('uncaughtException', function (err) {
         switch(client_address){
             case config.server_ip+':'+config.server_cmd_port:
                 console.log('[접속 실패] : 관리 포트');
-                process.exit();
-                /*
-                obj.proxy.session = [];
-                skt.destroy();
                 setTimeout(function(){
                     console.log('재접속 시도중..');
+                    skt.destroy();
+                    obj.proxy.session = [];
                     skt = cmd_socket.getConnection('cmd');
                 }, 5000);
-                */
                 break;
             case config.server_ip+':'+config.server_proxy_port:
                 console.log('[접속 실패] : 프록시 포트');
@@ -48,14 +45,11 @@ process.on('uncaughtException', function (err) {
     }else{
         console.log('[소켓 종료] : 알 수 없는 에러');
         console.log(err.stack);
-        throw new Error('으앙 듀금');
-        //process.exit();
-        /*
-        skt.destroy();
-        obj.proxy.session = [];
         setTimeout(function(){
             console.log('재접속 시도중..');
+            skt.destroy();
+            obj.proxy.session = [];
             skt = cmd_socket.getConnection('cmd');
-        }, 5000);*/
+        }, 5000);
     }
 });
