@@ -162,11 +162,13 @@ module.exports = function(main, ip, port) {
                     console.log(connName + ' Client disconnected[' + main.obj.proxy.session.length + ']');
                 }else{
                     console.log("메인 서버 종료");
+                    process.exit();
+                    /*
                     main.obj.proxy.session = [];
                     setTimeout(function(){
                         console.log("재접속 시도중..");
                         main.cmd_socket.getConnection("cmd");
-                    }, 5000);
+                    }, 5000);*/
                 }
                 console.log('Socket Closed');
             });
