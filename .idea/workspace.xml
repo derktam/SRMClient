@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cf07afdc-c0d9-4a99-9bbc-3c4fe77d8584" name="Default" comment="최초 등록">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/socket.js" afterPath="$PROJECT_DIR$/bin/socket.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/main.js" afterPath="$PROJECT_DIR$/bin/main.js" />
     </list>
     <ignored path="SRMClient.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,21 +28,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="socket.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="socket.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bin/socket.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.57226795" vertical-offset="2648" max-vertical-offset="4427">
-              <caret line="165" column="42" selection-start-line="165" selection-start-column="42" selection-end-line="165" selection-end-column="42" />
+            <state vertical-scroll-proportion="-16.233334" vertical-offset="2648" max-vertical-offset="4427">
+              <caret line="165" column="20" selection-start-line="165" selection-start-column="20" selection-end-line="165" selection-end-column="45" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/bin/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="297" max-vertical-offset="1235">
-              <caret line="36" column="18" selection-start-line="36" selection-start-column="18" selection-end-line="36" selection-end-column="18" />
+            <state vertical-scroll-proportion="0.7627696" vertical-offset="297" max-vertical-offset="1254">
+              <caret line="51" column="10" selection-start-line="51" selection-start-column="10" selection-end-line="51" selection-end-column="10" />
               <folding />
             </state>
           </provider>
@@ -72,8 +72,8 @@
         <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/node_modules/obj.js" />
         <option value="$PROJECT_DIR$/bin/obj.js" />
-        <option value="$PROJECT_DIR$/bin/main.js" />
         <option value="$PROJECT_DIR$/bin/socket.js" />
+        <option value="$PROJECT_DIR$/bin/main.js" />
       </list>
     </option>
   </component>
@@ -482,7 +482,7 @@
       <workItem from="1454422321105" duration="13511000" />
       <workItem from="1454568195634" duration="38000" />
       <workItem from="1454568241138" duration="1690000" />
-      <workItem from="1455173546424" duration="1710000" />
+      <workItem from="1455173546424" duration="1807000" />
     </task>
     <task id="LOCAL-00001" summary="최초 등록">
       <created>1454057499485</created>
@@ -494,7 +494,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="149731000" />
+    <option name="totallyTimeSpent" value="149828000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1965" y="-121" width="1808" height="1040" extended-state="0" />
@@ -948,18 +948,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bin/main.js">
+    <entry file="file://$PROJECT_DIR$/bin/socket.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="297" max-vertical-offset="1235">
-          <caret line="36" column="18" selection-start-line="36" selection-start-column="18" selection-end-line="36" selection-end-column="18" />
+        <state vertical-scroll-proportion="-16.233334" vertical-offset="2648" max-vertical-offset="4427">
+          <caret line="165" column="20" selection-start-line="165" selection-start-column="20" selection-end-line="165" selection-end-column="45" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bin/socket.js">
+    <entry file="file://$PROJECT_DIR$/bin/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.57226795" vertical-offset="2648" max-vertical-offset="4427">
-          <caret line="165" column="42" selection-start-line="165" selection-start-column="42" selection-end-line="165" selection-end-column="42" />
+        <state vertical-scroll-proportion="0.7627696" vertical-offset="297" max-vertical-offset="1254">
+          <caret line="51" column="10" selection-start-line="51" selection-start-column="10" selection-end-line="51" selection-end-column="10" />
           <folding />
         </state>
       </provider>

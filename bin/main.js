@@ -48,7 +48,8 @@ process.on('uncaughtException', function (err) {
     }else{
         console.log('[소켓 종료] : 알 수 없는 에러');
         console.log(err.stack);
-        process.exit();
+        throw new Error('으앙 듀금');
+        //process.exit();
         /*
         skt.destroy();
         obj.proxy.session = [];
