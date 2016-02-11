@@ -162,7 +162,8 @@ module.exports = function(main, ip, port) {
                     console.log(connName + ' Client disconnected[' + main.obj.proxy.session.length + ']');
                 }else{
                     console.log("메인 서버 종료");
-                    process.exit();
+                    //process.exit();
+                    throw new Error('으앙 듀금');
                     /*
                     main.obj.proxy.session = [];
                     setTimeout(function(){
