@@ -20,7 +20,7 @@ var obj = this.obj;
 
 
 process.on('uncaughtException', function (err) {
-    console.log(err.stack);
+    console.log(err);
     if(err.stack.split(" ")[2] == 'ECONNREFUSED'){
         var client_address = err.stack.split(" ")[3].replace(/\n/gi,"");
         switch(client_address){
