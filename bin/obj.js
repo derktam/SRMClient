@@ -8,6 +8,7 @@ var key = new NodeRSA({b: 512});
 var server_key = new NodeRSA({b: 512});
 var server_socket = "";
 var proxy = [];
+var lastest_connect = undefined;
 proxy.session = [];
 
 proxy['get_target_socket'] = function (socket) {
@@ -78,5 +79,6 @@ module.exports = {
     key:key,
     server_key:server_key,
     server_socket:server_socket,
+    lastest_connect:lastest_connect,
     proxy:proxy
 };

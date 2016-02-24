@@ -7,6 +7,7 @@ var readline = require('readline');
 
 var global = null;
 module.exports = function(main, ip, port) {
+    main.obj.lastest_connect = ip+ ":" +port;
     var getConnection = function(connName){
         var client = net.connect({port: port, host: ip}, function() {
             global = this;

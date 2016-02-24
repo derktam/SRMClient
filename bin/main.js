@@ -20,9 +20,9 @@ var obj = this.obj;
 
 
 process.on('uncaughtException', function (err) {
-    console.log(err);
-    if(err.stack.split(" ")[2] == 'ECONNREFUSED'){
-        var client_address = err.stack.split(" ")[3].replace(/\n/gi,"");
+    console.log(err.code);
+    if(err.code == 'ECONNREFUSED'){
+        var client_address = obj.lastest_connect;
         switch(client_address){
             case config.server_ip+':'+config.server_cmd_port:
                 console.log('[접속 실패] : 관리 포트');
@@ -44,13 +44,11 @@ process.on('uncaughtException', function (err) {
         }
     }else{
         console.log('[소켓 종료] : 알 수 없는 에러');
-        /*
         setTimeout(function(){
             console.log('재접속 시도중..');
             skt.destroy();
             obj.proxy.session = [];
             skt = cmd_socket.getConnection('cmd');
         }, 5000);
-        */
     }
 });
