@@ -44,12 +44,13 @@ process.on('uncaughtException', function (err) {
         }
     }else{
         console.log('[소켓 종료] : 알 수 없는 에러');
-        console.log(skt);
+        /*
         setTimeout(function(){
             console.log('재접속 시도중..');
             skt.destroy();
             obj.proxy.session = [];
             skt = cmd_socket.getConnection('cmd');
         }, 5000);
+        */
     }
 });
