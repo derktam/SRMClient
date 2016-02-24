@@ -20,7 +20,7 @@ var obj = this.obj;
 
 
 process.on('uncaughtException', function (err) {
-
+    console.log(err.stack);
     if(err.stack.split(" ")[2] == 'ECONNREFUSED'){
         var client_address = err.stack.split(" ")[3].replace(/\n/gi,"");
         switch(client_address){
@@ -44,7 +44,6 @@ process.on('uncaughtException', function (err) {
         }
     }else{
         console.log('[소켓 종료] : 알 수 없는 에러');
-        console.log(err.stack);
         setTimeout(function(){
             console.log('재접속 시도중..');
             skt.destroy();
